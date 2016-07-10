@@ -4,7 +4,7 @@ This is an experiment to formally verify a single producer / single consumer fif
 
 The use case I have in mind is the communication between two processor with some shared memory; in my instance it is the main ARM V8 core and the PRU of the arm 335x of the Beaglebone Black.
 
-I will use [Spin]http://spinroot.com/spin/whatispin.html with a simplified model of my queue.
+I will use [Spin](http://spinroot.com/spin/whatispin.html) with a simplified model of my queue.
 
 To check this model, install spin and run
 
