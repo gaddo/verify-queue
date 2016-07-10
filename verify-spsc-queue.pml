@@ -6,11 +6,15 @@ bit queue[QSIZE];
 proctype Push() { 
     again:
     (pushp >= popp && pushp - popp < QSIZE-1 || 
-        popp < pushp && (pushp + QSIZE) - popp < QSIZE-1 )  // aspetto che si liberi almeno un elemento dalla coda
-    // aggiungo un elemento in queue[pushp+1]
+        popp < pushp && (pushp + QSIZE) - popp < QSIZE-1 )  // wait to get at least a free element in the queue
+        
+    // verify that queue[pushp] contains a really free element
     assert(queue[pushp] == 0)
+    // mark the slot as used
     queue[pushp] = 1;
+    // increment the push pointer
     pushp = (pushp +1) % QSIZE;
+    // verify that we have not overrun or underrun the queue
     assert((pushp >= popp && pushp - popp <= QSIZE-1  && pushp - popp >= 0)  || 
            (pushp < popp && (pushp + QSIZE)- popp <= QSIZE-1  && (pushp + QSIZE) - popp >= 0) )
     goto again
@@ -18,12 +22,15 @@ proctype Push() {
 
 proctype Pop() { 
     again:
-    (pushp != popp); // se la coda e' vuota, aspetta
-    // leggo l'elemento in queue[popp]
+    (pushp != popp); // wait to get at least an element in the queue
+    
+    // verify that the element in the queue was pushed before freeing
     assert(queue[popp] == 1);
+    // mark element as unused
     queue[popp] = 0;
+    // increment the pop pointer
     popp = (popp + 1) % QSIZE;
-    // questo assert non riesce a gestire il warparound
+    // verify that we have not overrun or underrun the queue
     assert((pushp >= popp && pushp - popp <= QSIZE-1  && pushp - popp >= 0)  || 
            (pushp < popp && (pushp + QSIZE)- popp <= QSIZE-1  && (pushp + QSIZE) - popp >= 0) )
     goto again;
