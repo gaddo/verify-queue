@@ -1,10 +1,13 @@
 #define QSIZE 10
 byte pushp;
 byte popp;
+// this array track the validity of the data in the queue; 
+// 0 means that the data is free/invalid, 1 mean that the data has been pushed 
 bit queue[QSIZE];
 
 proctype Push() { 
     again:
+    // this is the spin syntax to say while (!condition) /* wait */;
     (pushp >= popp && pushp - popp < QSIZE-1 || 
         popp < pushp && (pushp + QSIZE) - popp < QSIZE-1 )  // wait to get at least a free element in the queue
         
