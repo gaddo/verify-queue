@@ -54,6 +54,6 @@ this (i hope ! ) proves that:
 3. every element that i pop from the queue has been pushed
 4. every element i push on the queue is not on an unread already pushed element
 
-The main problem in the implementation of the model is to handle correctly the warparound of the head and tail pointers. See the assertions the pml ...
+The main problem in the implementation of the model is to handle correctly the wraparound of the head and tail pointers. See the assertions the pml ...
 
 This is my very first formal verification; any kind of feedback is welcome !
