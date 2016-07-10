@@ -2,7 +2,7 @@
 
 This is an experiment to formally verify a single producer / single consumer fifo queue.
 
-The use case I have in mind is the communication between two processor with some sared memory; in my instance it is the main ARM V8 core and the pru of the arm 335x of the Beaglebone Black.
+The use case I have in mind is the communication between two processor with some shared memory; in my instance it is the main ARM V8 core and the PRU of the arm 335x of the Beaglebone Black.
 
 I will use [Spin]http://spinroot.com/spin/whatispin.html with a simplified model of my queue.
 
@@ -47,6 +47,13 @@ To check this model, install spin and run
 >
 >pan: elapsed time 0.01 seconds
 
-The main problem in the implementation of the model is to handle correctly the warparound of the head and tail pointers.
+this (i hope ! ) proves that:
 
-This is my very first formal verification; any king of feedback is welcome !
+1. the size of the fifo is never smaller that 0
+2. the size is never bigger than QUEUELEN
+3. every element that i pop from the queue has been pushed
+4. every element i push on the queue is not on an unread already pushed element
+
+The main problem in the implementation of the model is to handle correctly the warparound of the head and tail pointers. See the assertions the pml ...
+
+This is my very first formal verification; any kind of feedback is welcome !
