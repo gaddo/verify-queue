@@ -8,10 +8,10 @@ I will use [Spin](http://spinroot.com/spin/whatispin.html) with a simplified mod
 
 To check this model, install spin and run
 
-> spin -a verify-queue.pml
-> gcc -DMEMLIM=1024 -O2 -DXUSAFE -DSAFETY -DNOCLAIM -w -o pan pan.c
->./pan
->
+    spin -a verify-queue.pml
+    gcc -DMEMLIM=1024 -O2 -DXUSAFE -DSAFETY -DNOCLAIM -w -o pan pan.c
+    ./pan
+
 >(Spin Version 6.4.5 -- 1 January 2016)
 >        + Partial Order Reduction
 >
