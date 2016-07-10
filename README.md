@@ -8,7 +8,7 @@ I will use [Spin](http://spinroot.com/spin/whatispin.html) with a simplified mod
 
 To check this model, install spin and run
 
-    spin -a verify-queue.pml
+    spin -a verify-spsc-queue.pml
     gcc -DMEMLIM=1024 -O2 -DXUSAFE -DSAFETY -DNOCLAIM -w -o pan pan.c
     ./pan
 
