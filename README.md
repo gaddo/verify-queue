@@ -50,7 +50,7 @@ To check this model, install spin and run
 this (i hope ! ) proves that:
 
 1. the size of the fifo is never smaller that 0
-2. the size is never bigger than QUEUELEN
+2. the size is never bigger than QSIZE
 3. every element that i pop from the queue has been pushed
 4. every element i push on the queue is not on an unread already pushed element
 
